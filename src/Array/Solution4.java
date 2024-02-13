@@ -30,8 +30,7 @@ public class Solution4 {
     public static void main(String[] args) {
         int[] nums1 = new int[]{2, 2, 4, 4};
         int[] nums2 = new int[]{2, 2, 4, 4};
-        Solution q = new Solution();
+        Solution4 q = new Solution4();
         System.out.println(q.findMedianSortedArrays(nums1, nums2));
-
     }
 }

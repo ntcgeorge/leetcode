@@ -57,18 +57,6 @@ class Solution48 {
     }
 
     public static void main(String[] args) {
-        int row = StdIn.readInt();
-        int col = StdIn.readInt();
-        int[][] matrix = new int[row][col];
-        while (!StdIn.isEmpty()) {
-            for (int i = 0; i < row; i++)
-                for (int j = 0; j < col; j++) {
-                    matrix[i][j] = StdIn.readInt();
-                }
-        }
-        SpatialMatrix sp = new SpatialMatrix();
-        List<Integer> ans = sp.spiralOrder(matrix);
-        System.out.println(ans);
 
     }
 }

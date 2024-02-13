@@ -1,9 +1,10 @@
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
+/**
+ * https://leetcode.cn/problems/invert-binary-tree/
+ * risk level-medium
+ */
 public class Solution515 {
     public static void main(String[] args) {
         FastReader fr = new FastReader();
