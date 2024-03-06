@@ -3,47 +3,64 @@ import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
-/**
- * https://leetcode.cn/problems/kth-smallest-element-in-a-bst/submissions/501650707/
- * time: 15 min
- */
-public class Solution230 {
+public class Solution493 {
+
+    int count;
+
+
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
-            
-
-            Solution230 sol = new Solution230();
-            int k = fr.nextInt();
-            String s = fr.nextLine();
-            String[] inputs = s.split(",");
-            TreeNode root = new TreeNode(inputs);
-            out.println(sol.kthSmallest(root, k));
+            Solution493 sol = new Solution493();
+            int[] nums = fr.readIntLine(",");
+            int ans = sol.reversePairs(nums);
+            out.println(ans);
         }
         out.close();
     }
 
-    public int kthSmallest(TreeNode root, int k) {
-        Queue<Integer> ans = new LinkedList<>();
-        traverse(root, ans);
-        int x = 0;
-        for(int i=0; i < k; i++) {
-            x = ans.poll();
+    public int reversePairs(int[] nums) {
+        int count = 0;
+        for(int i=0; i < nums.length; i++) {
+            double target = ((double)nums[i]) / 2.0;
+            
+            int cnt = search(nums, i+1, nums.length-1, target);
+            System.out.println("count: " + cnt);
+            count += cnt;
         }
-        return x;
-        
+        return count;
+    }
+    
+    // find the minimum number in the range that is greater than target
+    private int search(int[] nums, int lo, int hi, double target) {
+        int[] arr = new int[hi - lo + 1];
+        for(int i=lo; i <= hi; i++) {
+            arr[i - lo] = nums[i];
+        }
+        Arrays.sort(arr);
+        int left = 0;
+        int right = arr.length - 1;
+        while(left <= right) {
+            int mid = left + (right - left) / 2;
+            if((double)arr[mid] > target) {
+                right = mid - 1;
+            }
+            if((double)arr[mid] == target) {
+                right = mid - 1;
+            }
+            if((double)arr[mid] < target) {
+                left = mid + 1;
+            }
+            
+        }
+        if(right < 0 || (double)arr[right] < target) return 0;
+        return right;
     }
 
-    private void traverse(TreeNode root, Queue<Integer> ans) {
-        if(root == null) return;
-
-        traverse(root.left, ans);
-        ans.offer(root.val);
-        traverse(root.right, ans);
-    }
     private static class FastReader { 
         BufferedReader br; 
         StringTokenizer st; 
@@ -93,9 +110,9 @@ public class Solution230 {
             return str; 
         }
     
-        int[] readIntLine() {
+        int[] readIntLine(String d) {
             String line = nextLine();
-            String[] lineSplit = line.split(" ");
+            String[] lineSplit = line.split(d);
             int[] intLine = new int[lineSplit.length];
             for(int j=0; j < intLine.length;j++) {
                 intLine[j] = Integer.parseInt(lineSplit[j]);

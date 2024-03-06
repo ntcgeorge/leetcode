@@ -3,23 +3,81 @@ import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 import java.lang.Math;
 
-public class Template {
+/**
+ * https://leetcode.cn/problems/open-the-lock/
+ * time: 50min
+ * observation: pay attention to the position of adding the visited node.
+ */
+public class Solution752 {
 
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
-            
-            
+            String[] deadends = fr.nextLine().split(",");
+            String target = fr.next();
+            Solution752 sol = new Solution752();
+            int ans = sol.openLock(deadends, target);
+            out.println(ans);
         }
         out.close();
     }
 
+    public int openLock(String[] deadends, String target) {
+        HashSet<String> dead = new HashSet<>();
+        HashSet<String> marked = new HashSet<>();
+        for(String num : deadends) {
+            dead.add(num);
+        }
+        Queue<String> q = new LinkedList<>();
+        q.add("0000");
+        if(dead.contains("0000")) return -1;
+        int step = 0; // final answer
+        //bfs
+        while(!q.isEmpty()) {
+            int size = q.size();
+            for(int i=0; i < size; i++) {
+                String s = q.poll();
+                if(marked.contains(s) || dead.contains(s)) continue;
+                marked.add(s);
+                if(s.equals(target)) return step;
+                for(String next : adj(s)) {
+                    if(dead.contains(next))continue;
+                    if(!marked.contains(next)){
+                        q.offer(next);
+                         // avoid repeatedly visiting a node
+                    }
+                }
+            }
+            step++;
+        }
+        return -1;
+    }
+
+    private Iterable<String> adj(String num) {
+        int[] margin = new int[]{-1, 1};
+        char[] chs = num.toCharArray();
+        ArrayList<String> arr = new ArrayList<>();
+        for(int i=0; i < num.length(); i++) {
+            char ch = num.charAt(i);
+            int x = ch - '0';
+            char temp = chs[i];
+            for(int m : margin) {
+                int y = x + m;
+                if(y > 9) y = 0;
+                if(y < 0) y = 9;
+                chs[i] = (char)(y + '0');
+                arr.add(new String(chs));
+                chs[i] = temp;
+            }
+        }
+        return arr;
+    }
 }
+
 
 class FastReader { 
     BufferedReader br; 

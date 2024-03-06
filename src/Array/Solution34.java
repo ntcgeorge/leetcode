@@ -59,7 +59,7 @@ public class Solution34 {
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
-        // write your code here
+        
         int n = fr.nextInt();
         int[] nums = new int[n];
         int target = fr.nextInt();

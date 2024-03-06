@@ -13,7 +13,7 @@ public class Solution567 {
         FastReader fr = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
 
-        // write your code here
+        
         String s1 = fr.next();
         String s2 = fr.next();
         out.println(checkInclusion(s1, s2));

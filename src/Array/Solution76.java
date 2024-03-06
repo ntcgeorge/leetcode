@@ -17,7 +17,7 @@ public class Solution76 {
         FastReader fr = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
 
-        // write your code here
+        
         String s = fr.next();
         String t = fr.next();
         out.println(minWindow(s, t));

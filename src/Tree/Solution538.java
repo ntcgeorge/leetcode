@@ -16,7 +16,7 @@ public class Solution538 {
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
-            // write your code here
+            
             Solution538 sol = new Solution538();
         }
         out.close();

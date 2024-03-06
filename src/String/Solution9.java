@@ -5,44 +5,35 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * https://leetcode.cn/problems/kth-smallest-element-in-a-bst/submissions/501650707/
- * time: 15 min
+ * https://leetcode.cn/problems/palindrome-number/submissions/504425365/
+ * time: 9min
  */
-public class Solution230 {
+public class Solution9 {
+
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
-            
-
-            Solution230 sol = new Solution230();
-            int k = fr.nextInt();
-            String s = fr.nextLine();
-            String[] inputs = s.split(",");
-            TreeNode root = new TreeNode(inputs);
-            out.println(sol.kthSmallest(root, k));
+            int x = fr.nextInt();
+            out.println(isPalindrome(x));
         }
         out.close();
     }
 
-    public int kthSmallest(TreeNode root, int k) {
-        Queue<Integer> ans = new LinkedList<>();
-        traverse(root, ans);
-        int x = 0;
-        for(int i=0; i < k; i++) {
-            x = ans.poll();
+    public static boolean isPalindrome(int x) {
+        if(x < 0) return false;
+        Queue<Integer> arr = new LinkedList<Integer>();
+        int a = x;
+        while(a != 0) {
+            arr.offer(a - (a / 10) * 10);
+            a = a / 10;
         }
-        return x;
-        
-    }
-
-    private void traverse(TreeNode root, Queue<Integer> ans) {
-        if(root == null) return;
-
-        traverse(root.left, ans);
-        ans.offer(root.val);
-        traverse(root.right, ans);
+        int m = 0;
+        while(!arr.isEmpty()) {
+            m = m * 10 + arr.poll();
+        }
+        return x == m;
     }
     private static class FastReader { 
         BufferedReader br; 
@@ -93,9 +84,9 @@ public class Solution230 {
             return str; 
         }
     
-        int[] readIntLine() {
+        int[] readIntLine(String d) {
             String line = nextLine();
-            String[] lineSplit = line.split(" ");
+            String[] lineSplit = line.split(d);
             int[] intLine = new int[lineSplit.length];
             for(int j=0; j < intLine.length;j++) {
                 intLine[j] = Integer.parseInt(lineSplit[j]);

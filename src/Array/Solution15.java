@@ -3,20 +3,66 @@ import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 import java.lang.Math;
 
-public class Template {
+/**
+ * https://leetcode.cn/problems/3sum/description/
+ * time: 37min
+ * Observation: sort and reduce the complexity by double pointer, deduplicating trick is very
+ * important, the trick leverages the fact that sorting will aggregate the same number on
+ * the adjacent position
+ */
+public class Solution15 {
 
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
-            
+            Solution15 sol = new Solution15();
+            int[] nums = fr.readIntLine(",");
+            out.println(sol.threeSum(nums));
             
         }
         out.close();
+    }
+
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> res =  new ArrayList<>();
+        Arrays.sort(nums);
+        for(int i=0; i < nums.length;) {
+            int val = nums[i];
+            if(nums[i] > 0) return res;
+            int target = 0 - nums[i];
+            int left = i + 1;
+            int right = nums.length - 1;
+            while(left < right) {
+                int lo = nums[left];
+                int hi = nums[right];
+
+                if(nums[left] + nums[right] < target) {
+                    while(left < right && nums[left] == lo) left++;
+                }
+                else if(nums[left] + nums[right] > target) {
+                    while(left < right && nums[right] == hi) right--;
+                }
+                else  {
+                    ArrayList<Integer> arr = new ArrayList<>();
+                    arr.add(nums[i]);
+                    arr.add(lo);
+                    arr.add(hi);
+                    res.add(arr);
+                    while(left < right && nums[left] == lo) {
+                        left ++;
+                    }
+                    while(left < right && nums[right] ==  hi) {
+                        right--;
+                    }
+                }
+            }
+            while(i < nums.length && nums[i] == val) i++;
+        }
+        return res;
     }
 
 }

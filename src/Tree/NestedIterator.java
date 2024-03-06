@@ -1,49 +1,60 @@
 import java.io.PrintWriter;
-import java.util.*;
+import java.util.* ;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/**
- * https://leetcode.cn/problems/kth-smallest-element-in-a-bst/submissions/501650707/
- * time: 15 min
- */
-public class Solution230 {
-    public static void main(String[] args) {
-        FastReader fr = new FastReader();
-        PrintWriter out = new PrintWriter(System.out);
-        int n = fr.nextInt();
-        for(int i=0; i < n; i++) {
-            
+/*
+ * https://leetcode.cn/problems/flatten-nested-list-iterator/
+ * time: 22 min
+ */  
 
-            Solution230 sol = new Solution230();
-            int k = fr.nextInt();
-            String s = fr.nextLine();
-            String[] inputs = s.split(",");
-            TreeNode root = new TreeNode(inputs);
-            out.println(sol.kthSmallest(root, k));
+
+public class NestedIterator implements Iterator<Integer>{
+
+    NestedIterator[] arr;
+    int pos;
+    Integer val;
+
+    public NestedIterator(List<NestedInteger> nestedList) {
+        if(nestedList == null) return;
+        arr = new NestedIterator[nestedList.size()];
+        int i=0;
+        for(NestedInteger ni: nestedList) {
+            arr[i] = new NestedIterator(ni.getList());
+            if(ni.isInteger()) {
+                arr[i].val = ni.getInteger();
+            }
+            i++;
         }
-        out.close();
+        pos = 0;
     }
 
-    public int kthSmallest(TreeNode root, int k) {
-        Queue<Integer> ans = new LinkedList<>();
-        traverse(root, ans);
-        int x = 0;
-        for(int i=0; i < k; i++) {
-            x = ans.poll();
+
+    @Override
+    public Integer next() {
+        NestedIterator curr = arr[pos];
+        if(curr.val == null) {
+            pos++;
+            return curr.val;
         }
-        return x;
+        else {
+            if(curr.hasNext()) return curr.next();
+            return null;
+        }
         
     }
 
-    private void traverse(TreeNode root, Queue<Integer> ans) {
-        if(root == null) return;
-
-        traverse(root.left, ans);
-        ans.offer(root.val);
-        traverse(root.right, ans);
+    public static void main(String[] args) {
+        PrintWriter out = new PrintWriter(System.out);
+        List<NestedInteger> nestedList= new ArrayList<>();
     }
+
+    @Override
+    public boolean hasNext() {
+        return pos == arr.length;
+    }
+
     private static class FastReader { 
         BufferedReader br; 
         StringTokenizer st; 
@@ -93,9 +104,9 @@ public class Solution230 {
             return str; 
         }
     
-        int[] readIntLine() {
+        int[] readIntLine(String d) {
             String line = nextLine();
-            String[] lineSplit = line.split(" ");
+            String[] lineSplit = line.split(d);
             int[] intLine = new int[lineSplit.length];
             for(int j=0; j < intLine.length;j++) {
                 intLine[j] = Integer.parseInt(lineSplit[j]);

@@ -3,46 +3,67 @@ import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 /**
- * https://leetcode.cn/problems/kth-smallest-element-in-a-bst/submissions/501650707/
- * time: 15 min
+ * Quick sort version solution of question 215
+ * https://leetcode.cn/problems/kth-largest-element-in-an-array/
+ * time:
  */
-public class Solution230 {
+public class Solution215QS {
+    int k;
+    int v;
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
-            
-
-            Solution230 sol = new Solution230();
+            Solution215QS sol = new Solution215QS();
             int k = fr.nextInt();
-            String s = fr.nextLine();
-            String[] inputs = s.split(",");
-            TreeNode root = new TreeNode(inputs);
-            out.println(sol.kthSmallest(root, k));
+            int[] nums = fr.readIntLine(",");
+            int ans = sol.findKthLargest(nums, k);
+            out.println(ans);
         }
         out.close();
     }
 
-    public int kthSmallest(TreeNode root, int k) {
-        Queue<Integer> ans = new LinkedList<>();
-        traverse(root, ans);
-        int x = 0;
-        for(int i=0; i < k; i++) {
-            x = ans.poll();
-        }
-        return x;
-        
+    public int findKthLargest(int[] nums, int k) {
+        this.k = k;
+        quickSort(nums, 0, nums.length - 1);
+        return this.v;
+
     }
 
-    private void traverse(TreeNode root, Queue<Integer> ans) {
-        if(root == null) return;
+    private void quickSort(int[] nums, int lo, int hi) {
+        if(hi<lo) return;
+        int p = partition(nums, lo, hi);
+        if(nums.length - p == this.k) {
+            this.v = nums[p];
+            return;
+        }
+        quickSort(nums, lo, p-1);
+        quickSort(nums, p+1, hi);
+    }
 
-        traverse(root.left, ans);
-        ans.offer(root.val);
-        traverse(root.right, ans);
+    private int partition(int[] nums, int lo, int hi) {
+        if(lo == hi) return lo;
+        int left = lo;
+        int right = hi + 1;
+        int w = nums[lo];
+        while(true) {
+            while(nums[--right] > w) if(right == lo) break;
+            while(nums[++left] <= w) if(left == hi) break;
+            if(right <= left) break;
+            exch(nums, left, right);
+        }
+        exch(nums, lo, right);
+        return right;
+    }
+
+    private void exch(int[] nums, int v, int w) {
+        int temp = nums[v];
+        nums[v] = nums[w];
+        nums[w] = temp;
     }
     private static class FastReader { 
         BufferedReader br; 
@@ -93,9 +114,9 @@ public class Solution230 {
             return str; 
         }
     
-        int[] readIntLine() {
+        int[] readIntLine(String d) {
             String line = nextLine();
-            String[] lineSplit = line.split(" ");
+            String[] lineSplit = line.split(d);
             int[] intLine = new int[lineSplit.length];
             for(int j=0; j < intLine.length;j++) {
                 intLine[j] = Integer.parseInt(lineSplit[j]);

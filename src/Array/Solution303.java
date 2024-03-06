@@ -12,7 +12,7 @@ public class Solution303 {
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
-            // write your code here
+            
             int[] nums = fr.readIntLine();
             NumArray na = new NumArray(nums);
             out.println(na.sumRange(0, nums.length - 1));

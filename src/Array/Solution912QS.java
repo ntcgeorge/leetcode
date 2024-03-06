@@ -3,46 +3,75 @@ import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
-/**
- * https://leetcode.cn/problems/kth-smallest-element-in-a-bst/submissions/501650707/
- * time: 15 min
- */
-public class Solution230 {
+public class Solution912QS {
+
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
+            int[] nums = fr.readIntLine();
+            Solution912QS sol = new Solution912QS();
+            sol.sortArray(nums);
+            for(int num : nums) {
+                out.print(num + " ");
+            }
+            out.println();
             
-
-            Solution230 sol = new Solution230();
-            int k = fr.nextInt();
-            String s = fr.nextLine();
-            String[] inputs = s.split(",");
-            TreeNode root = new TreeNode(inputs);
-            out.println(sol.kthSmallest(root, k));
         }
         out.close();
     }
 
-    public int kthSmallest(TreeNode root, int k) {
-        Queue<Integer> ans = new LinkedList<>();
-        traverse(root, ans);
-        int x = 0;
-        for(int i=0; i < k; i++) {
-            x = ans.poll();
-        }
-        return x;
-        
+    public int[] sortArray(int[] nums) {
+        shuffle(nums);
+        quickSort(nums);
+        return nums;
     }
 
-    private void traverse(TreeNode root, Queue<Integer> ans) {
-        if(root == null) return;
+    private void quickSort(int[] nums) {
+        if(nums.length == 1) return;
+        quickSort(nums, 0, nums.length - 1);
 
-        traverse(root.left, ans);
-        ans.offer(root.val);
-        traverse(root.right, ans);
+    }
+
+    private void quickSort(int[] nums, int lo, int hi) {
+        if(lo >= hi) return;
+        int k = partition(nums, lo, hi);
+        quickSort(nums, lo, k - 1);
+        quickSort(nums, k+1, hi);
+    }
+
+    private int partition(int[] nums, int lo, int hi) {
+        int k = nums[lo];
+        int left = lo;
+        int right = hi + 1; // the range is (left, j], [i, right).
+        while(true) {
+            while(nums[++left] <= k) if(left == hi) break;
+            while(nums[--right] > k) if(right == lo) break;
+            if(left >= right) break;
+            swap(nums, left, right);
+        }
+        swap(nums, lo, right);
+        return right;
+    }
+
+    private void swap(int[] nums, int v, int w) {
+        int temp = nums[v];
+        nums[v] = nums[w];
+        nums[w] = temp;
+    }
+
+    public static void shuffle(int[] a) {
+        Random random = new Random();
+        int n = a.length;
+        for (int i = 0; i < n; i++) {
+            int r = i + random.nextInt(n-i);     // between i and n-1
+            int temp = a[i];
+            a[i] = a[r];
+            a[r] = temp;
+        }
     }
     private static class FastReader { 
         BufferedReader br; 

@@ -3,10 +3,9 @@ import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 import java.lang.Math;
 
-public class Template {
+public class Solution111 {
 
     public static void main(String[] args) {
         FastReader fr = new FastReader();
@@ -19,6 +18,23 @@ public class Template {
         out.close();
     }
 
+    public int minDepth(TreeNode root) {
+        if(root == null) return 0;
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+        int size = 0;
+        while(!q.isEmpty()) {
+            int n = q.size();
+            size ++;
+            for(int i=0; i < n; i++) {
+                TreeNode node = q.poll();
+                if(node.right == null && node.left == null) return size;
+                if(node.left != null) q.offer(node.left);
+                if(node.right != null) q.offer(node.right);
+            }
+        }
+        return size;
+    }
 }
 
 class FastReader { 

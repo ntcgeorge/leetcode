@@ -3,47 +3,43 @@ import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 /**
- * https://leetcode.cn/problems/kth-smallest-element-in-a-bst/submissions/501650707/
- * time: 15 min
+ * https://leetcode.cn/problems/container-with-most-water/submissions/504442322/
+ * time: 27min
  */
-public class Solution230 {
+public class Solution11 {
+
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
             
-
-            Solution230 sol = new Solution230();
-            int k = fr.nextInt();
-            String s = fr.nextLine();
-            String[] inputs = s.split(",");
-            TreeNode root = new TreeNode(inputs);
-            out.println(sol.kthSmallest(root, k));
+            
         }
         out.close();
     }
 
-    public int kthSmallest(TreeNode root, int k) {
-        Queue<Integer> ans = new LinkedList<>();
-        traverse(root, ans);
-        int x = 0;
-        for(int i=0; i < k; i++) {
-            x = ans.poll();
+    public int maxArea(int[] height) {
+        int left = 0;
+        int right = height.length - 1;
+        int champ = 0;
+        while(left < right) {
+            int lo = Math.min(height[left], height[right]);
+            int volume = lo * (right - left);
+            if(volume > champ) champ = volume;
+            if(height[left] < height[right]) {
+                while(height[++left] < lo) if (left == right) return champ;
+            }else {
+                while(height[--right] < lo) if (left == right) return champ;
+
+            }
         }
-        return x;
-        
+        return champ;
     }
 
-    private void traverse(TreeNode root, Queue<Integer> ans) {
-        if(root == null) return;
-
-        traverse(root.left, ans);
-        ans.offer(root.val);
-        traverse(root.right, ans);
-    }
     private static class FastReader { 
         BufferedReader br; 
         StringTokenizer st; 
@@ -93,9 +89,9 @@ public class Solution230 {
             return str; 
         }
     
-        int[] readIntLine() {
+        int[] readIntLine(String d) {
             String line = nextLine();
-            String[] lineSplit = line.split(" ");
+            String[] lineSplit = line.split(d);
             int[] intLine = new int[lineSplit.length];
             for(int j=0; j < intLine.length;j++) {
                 intLine[j] = Integer.parseInt(lineSplit[j]);

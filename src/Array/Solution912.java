@@ -17,7 +17,7 @@ public class Solution912 {
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
-            // write your code here
+            
             Solution912 sol = new Solution912();
             int[] nums = fr.readIntLine();
             for(int ans : sol.sortArray(nums)) {

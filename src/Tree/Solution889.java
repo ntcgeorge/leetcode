@@ -15,7 +15,7 @@ public class Solution889 {
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
-            // write your code here
+            
             
         }
         out.close();

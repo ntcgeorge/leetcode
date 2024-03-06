@@ -3,22 +3,33 @@ import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 import java.lang.Math;
 
-public class Template {
+public class Solution1 {
 
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
-            
+            Solution1 sol = new Solution1();
             
         }
         out.close();
     }
 
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> valToIndex = new HashMap<>();
+        for(int i =0; i < nums.length; i++) {
+            int x = target - nums[i];
+            if(valToIndex.containsKey(x)) {
+                return new int[]{valToIndex.get(x), i};
+            }
+            valToIndex.put(nums[i], i);
+        }
+
+        return null;
+    }
 }
 
 class FastReader { 

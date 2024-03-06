@@ -11,7 +11,7 @@ public class Solution226 {
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
-            // write your code here
+            
             String[] inputs = fr.nextLine().split(",");
             TreeNode root = new TreeNode(inputs);
             out.println(invertTree(root));
