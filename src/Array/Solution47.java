@@ -3,10 +3,13 @@ import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 import java.lang.Math;
 
-public class Template {
+/**
+ * https://leetcode.cn/problems/permutations-ii/
+ * time: 10 min
+ */
+public class Solution47 {
 
     public static void main(String[] args) {
         FastReader fr = new FastReader();
@@ -15,7 +18,35 @@ public class Template {
         for(int i=0; i < n; i++) {
             
         }
-        out.close();
+    }
+
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        Queue<Integer> queue = new LinkedList<>();
+        for(int num: nums) queue.add(num);
+        List<List<Integer>> ans =  new ArrayList<List<Integer>>();
+        List<Integer> curr = new ArrayList<>();
+        HashSet<List<Integer>> set= new HashSet<>();
+        generate(ans, curr, queue, set);
+        return ans;
+    }
+
+    private void generate(List<List<Integer>> ans, List<Integer> curr, Queue<Integer> queue, HashSet<List<Integer>> set) {
+        if(queue.isEmpty() && !set.contains(curr)) {
+            ArrayList<Integer> temp = new ArrayList<Integer>(curr);
+            ans.add(temp);
+            set.add(temp);
+            return;
+        }
+
+        int n = queue.size();
+        for(int i=0; i < n; i++) {
+            int val = queue.poll();
+            curr.add(val);
+            generate(ans, curr, queue, set);
+            curr.remove(curr.size() - 1);
+            queue.offer(val);
+        }
+        
     }
 
 }

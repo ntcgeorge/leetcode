@@ -3,19 +3,53 @@ import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 import java.lang.Math;
 
-public class Template {
+/**
+ * another solution to problem 47, use trimming techniques.
+ * https://leetcode.cn/problems/permutations-ii/
+ * time: 
+ */
+public class Solution47_1 {
 
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
-            
+            Solution47_1 sol = new Solution47_1();
+            int[] nums = fr.readIntLine(",");
+            out.println(sol.permuteUnique(nums));
         }
         out.close();
+    }
+    List<List<Integer>> res = new LinkedList<>();
+    LinkedList<Integer> curr = new LinkedList<>();
+    boolean[] marked;
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        marked = new boolean[nums.length];
+        Arrays.sort(nums);
+        backTrace(nums);
+        return res;
+    }
+
+    private void backTrace(int[] nums) {
+        if(curr.size() == nums.length) {
+            res.add(new ArrayList<>(curr));
+            return;
+        }
+
+        for(int i=0; i < nums.length; i++) {
+            if(marked[i]) continue;
+            if(i > 0 && nums[i] == nums[i - 1] && !marked[i - 1]) {
+                continue;
+            }
+            curr.add(nums[i]);
+            marked[i] = true;
+            backTrace(nums);
+            marked[i] = false;
+            curr.removeLast();
+        }
     }
 
 }

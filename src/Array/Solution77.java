@@ -3,19 +3,45 @@ import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 import java.lang.Math;
 
-public class Template {
+public class Solution77 {
 
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
-            
+            Solution77 sol = new Solution77();
+            int size = fr.nextInt();
+            int k = fr.nextInt();
+            out.println(sol.combine(size, k));
         }
         out.close();
+    }
+
+    public List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> curr = new ArrayList<>();
+        int[] nums = new int[n];
+        for(int i=1; i <= n; i++) {
+            nums[i-1] = i;
+        }
+        select(nums, res, 0, curr, k);
+        return res;
+    }
+
+
+    private void select(int[] nums, List<List<Integer>> res, int index, List<Integer> curr, int k) {
+        if(curr.size() == k) {
+            res.add(new ArrayList<Integer>(curr));
+            return;
+        }
+        for(int i=index; i < nums.length; i++) {
+            curr.add(nums[i]);
+            select(nums, res, i+1, curr, k);
+            curr.remove(curr.size() - 1);
+        }
     }
 
 }

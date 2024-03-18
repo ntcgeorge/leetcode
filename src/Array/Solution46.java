@@ -3,19 +3,52 @@ import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 import java.lang.Math;
 
-public class Template {
+/**
+ * https://leetcode.cn/problems/permutations/
+ * time: 21min
+ */
+public class Solution46 {
 
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
+            Solution46 sol = new Solution46();
+            int[] nums =  fr.readIntLine(",");
+            List<List<Integer>> ans = sol.permute(nums);
+            out.println(ans);
             
         }
         out.close();
+    }
+
+
+    public List<List<Integer>> permute(int[] nums) {
+        Queue<Integer> queue = new LinkedList<>();
+        for(int num: nums) queue.add(num);
+        List<List<Integer>> ans =  new ArrayList<List<Integer>>();
+        List<Integer> curr = new ArrayList<>();
+        generate(ans, curr, queue);
+        return ans;
+    }
+
+    private void generate(List<List<Integer>> ans, List<Integer> curr, Queue<Integer> queue) {
+        if(queue.isEmpty()) {
+            ans.add(new ArrayList<Integer>(curr));
+            return;
+        }
+        int n = queue.size();
+        for(int i=0; i < n; i++) {
+            int val = queue.poll();
+            curr.add(val);
+            generate(ans, curr, queue);
+            curr.remove(curr.size() - 1);
+            queue.offer(val);
+        }
+        
     }
 
 }

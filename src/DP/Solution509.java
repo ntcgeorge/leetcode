@@ -3,10 +3,9 @@ import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 import java.lang.Math;
 
-public class Template {
+public class Solution509 {
 
     public static void main(String[] args) {
         FastReader fr = new FastReader();
@@ -17,6 +16,21 @@ public class Template {
         }
         out.close();
     }
+
+    public int fib(int n) {
+        if(n == 0) return 0;
+        if(n == 1) return 1;
+        int dp1=0, dp2=1;
+        for(int i=2; i <= n; i++) {
+            int dp = dp1 + dp2;
+            dp1 = dp2;
+            dp2 = dp;
+        }
+        return dp2;
+    }
+
+
+    
 
 }
 

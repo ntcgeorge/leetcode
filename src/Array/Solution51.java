@@ -1,24 +1,120 @@
 import java.io.PrintWriter;
 import java.util.*;
+
+import javax.swing.event.ListDataListener;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 import java.lang.Math;
 
-public class Template {
+/**
+ * https://leetcode.cn/problems/n-queens
+ * time: 1hr20min
+ * 
+ * Observation:
+ * 1. each row and each column can have only one queen, because there is n
+ * queen on the n by n board.
+ * 2. we can use tracing-back method to list all the possible combination (row by row)
+ * and exclude the invalid options(diagonal condition).
+ * 3. how do we determine the diagonal condition:
+ * if there is a queen on (x, y), then diagonal position(p, q) would satisfy
+ * x - p == y - q or x - p == q - y
+ * Pitfall:
+ * 1. line 75: should not return the method if the option is invalid but to move
+ * to the next position
+ */
+public class Solution51 {
 
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
-            
+            int size = fr.nextInt();
+            Solution51 sol = new Solution51();
+            out.println(sol.solveNQueens(size));
         }
         out.close();
     }
+    int n;
+    private static class Pair {
+        int x; 
+        int y;
 
+        Pair(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    List<String> board;
+    public List<List<String>> solveNQueens(int n) {
+        this.n = n;
+        ArrayList<List<String>> res = new ArrayList<>();
+        board = new ArrayList<>();
+        List<Pair> prev = new ArrayList<>();
+        backTrace(board, prev, res);
+        return res;   
+    }
+
+    private void backTrace(List<String> board,  List<Pair> prev, List<List<String>> res) {
+        if(board.size() == n) {
+            res.add(new ArrayList<String>(board));
+            return;
+        }
+        // iterate over the current row
+
+        int row = board.size();
+
+        // check if  previous queens make it invalid.
+        for(int col=0; col < n; col++) {
+            boolean flag = false;
+            // System.out.println("row:" + row + "  col: " + col);
+            Pair curr = new Pair(col, row);
+            for(Pair pair : prev) {
+                if(check(pair, curr)) {
+                    flag = true;
+                    break;
+                }
+            }
+            if(flag) continue;
+            prev.add(curr);
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i < col; i++) {
+                sb.append(".");
+            }
+            sb.append("Q");
+            for(int i=col+1; i < n; i++) {
+                sb.append(".");
+            }
+            board.add(sb.toString());
+
+            // calling the function
+            backTrace(board, prev, res);
+            board.remove(board.size() - 1);
+            prev.remove(prev.size() - 1);
+        }
+        
+    }
+
+    private boolean check(Pair p1, Pair p2) {
+        
+        return p1.x - p2.x == p1.y - p2.y
+        || p1.x - p2.x == p2.y - p1.y 
+        || p1.x == p2.x;
+    }
 }
+
+
+
+
+
+
+
+
+
+
 
 class FastReader { 
     BufferedReader br; 
@@ -172,13 +268,5 @@ class TreeNode {
         List<String> wordList = Arrays.asList(s.split("\\s"));
         Collections.reverse(wordList);
         return " " + String.join(" ", wordList);
-    }
-    public static void main(String[] args) {
-        FastReader fr = new FastReader();
-        PrintWriter out = new PrintWriter(System.out);
-        //write your code here
-        TreeNode node = new TreeNode(args);
-        out.println(node);
-        out.close();
     }
 }

@@ -3,10 +3,16 @@ import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 import java.lang.Math;
 
-public class Template {
+/**
+ * https://leetcode.cn/problems/coin-change/
+ * time: 42 min
+ * Observation:
+ * 1. dynamic programming trick: base case -> transition function -> memo optimization
+ * 2. notice where to update memo
+ */
+public class Solution322 {
 
     public static void main(String[] args) {
         FastReader fr = new FastReader();
@@ -18,7 +24,42 @@ public class Template {
         out.close();
     }
 
+    int[] memo;
+    public int coinChange(int[] coins, int amount) {
+       Arrays.sort(coins);
+       memo = new int[amount+1];
+       for(int i=0; i < amount+1; i++) {
+            memo[i] = -2;
+        }
+       return dp(coins, amount);
+       
+   }
+
+   // find the minimum number of coins given the amount and coins.
+   private int dp(int[] coins, int amount) {
+       if(amount < 0) {
+           return -1;
+       }
+
+       if(amount == 0) return 0;
+
+       if(memo[amount] != -2) return memo[amount];
+       int res;
+       int min = Integer.MAX_VALUE;
+       for(int coin : coins) {
+           
+           res = dp(coins, amount - coin);
+           
+           if(res >= 0) {
+               min = Math.min(min, res + 1);
+           }
+       }
+       memo[amount] = (min == Integer.MAX_VALUE ? -1 : min);
+       return memo[amount];
+   }
 }
+
+
 
 class FastReader { 
     BufferedReader br; 

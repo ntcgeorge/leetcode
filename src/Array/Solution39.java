@@ -3,20 +3,53 @@ import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 import java.lang.Math;
 
-public class Template {
+/**
+ * https://leetcode.cn/problems/combination-sum/
+ * time: 14min
+ */
+public class Solution39 {
 
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
-            
+            Solution39 sol = new Solution39();
+            int target = fr.nextInt();
+            int[] candidates = fr.readIntLine(",");
+            out.println(sol.combinationSum(candidates, target));
         }
         out.close();
     }
+
+    List<List<Integer>> res;
+    LinkedList<Integer> curr;
+    int sum = 0;
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        Arrays.sort(candidates);
+        res = new ArrayList<>();
+        curr = new LinkedList<>();
+        backTrace(candidates, target, 0);
+        return res;
+    }
+
+    private void backTrace(int[] candidates, int target, int index) {
+        if(sum == target)  {
+            res.add(new LinkedList<>(curr));
+        }
+        if(sum > target)  return;
+        for(int i=index; i < candidates.length; i++) {
+            curr.addLast(candidates[i]);
+            sum += candidates[i];
+            backTrace(candidates, target, i);
+            sum -= candidates[i];
+            curr.removeLast();
+        }
+    }
+
+    
 
 }
 

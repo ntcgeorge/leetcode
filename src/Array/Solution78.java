@@ -3,22 +3,40 @@ import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 import java.lang.Math;
 
-public class Template {
+public class Solution78 {
 
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
-            
+            Solution78 sol = new Solution78();
+            int[] nums = fr.readIntLine(",");
+            out.println(sol.subsets(nums));
         }
         out.close();
     }
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> curr = new ArrayList<>();
+        select(nums, res, 0, curr);
+        return res;
+    }
 
+    private void select(int[] nums, List<List<Integer>> res, int index, List<Integer> curr) {
+        res.add(new ArrayList<Integer>(curr));
+        for(int i=index; i < nums.length; i++) {
+            curr.add(nums[i]);
+            select(nums, res, i+1, curr);
+            curr.remove(curr.size() - 1);
+        }
+    }
 }
+
+
+
 
 class FastReader { 
     BufferedReader br; 

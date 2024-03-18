@@ -3,19 +3,56 @@ import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 import java.lang.Math;
 
-public class Template {
+/**
+ * https://leetcode.cn/problems/combination-sum-ii/
+ * time: 19min
+ * Observation:
+ * 1. line 45 deduplicating tricks
+ */
+public class Solution40 {
 
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
-            
+            Solution40 sol = new Solution40();
+            int[] candidates = fr.readIntLine(",");
+            int target = fr.nextInt();
+            out.println(sol.combinationSum2(candidates, target));
         }
         out.close();
+    }
+
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> curr = new ArrayList<>();
+        Arrays.sort(candidates);
+        backTrace(res, curr, 0, candidates, target, 0);
+        return res;
+    }
+
+    private void backTrace(List<List<Integer>> res, List<Integer> curr, int index, int[] candidates, int target, int sum) {
+        if(sum == target) {
+            res.add(new ArrayList<>(curr));
+            return;
+        }
+        if(sum > target) return;
+        
+        for(int i=index; i < candidates.length; i++) {
+            if(i > index && candidates[i] == candidates[i - 1]) {
+                continue;
+            }
+
+            curr.add(candidates[i]);
+            sum += candidates[i];
+            backTrace(res, curr, i+1, candidates, target, sum);
+            curr.remove(curr.size() - 1);
+            sum -= candidates[i];
+        }
+        
     }
 
 }

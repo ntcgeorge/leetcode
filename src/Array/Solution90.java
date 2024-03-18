@@ -3,19 +3,50 @@ import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 import java.lang.Math;
 
-public class Template {
+/**
+ * https://leetcode.cn/problems/subsets-ii/description/
+ * time: 10min
+ * Observation:
+ * 1. sort nums first and use a set to record the added array list, the reason why
+ * we use sorting fist is because ArrayLists of different order are different.
+ */
+public class Solution90 {
 
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
         int n = fr.nextInt();
         for(int i=0; i < n; i++) {
-            
+            Solution90 sol = new Solution90();
+            int[] nums = fr.readIntLine(",");
+            out.println(sol.subsetsWithDup(nums));
         }
         out.close();
+    }
+
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        HashSet<List<Integer>> set = new HashSet<>();
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> curr = new ArrayList<>();
+        Arrays.sort(nums);
+        select(nums, res, 0, curr, set);
+        return res;
+    }
+
+
+    private void select(int[] nums, List<List<Integer>> res, int index, List<Integer> curr, HashSet<List<Integer>> set) {
+        if(!set.contains(curr)) {
+            ArrayList<Integer> temp = new ArrayList<Integer>(curr);
+            res.add(temp);
+            set.add(temp);
+        }
+        for(int i=index; i < nums.length; i++) {
+            curr.add(nums[i]);
+            select(nums, res, i+1, curr, set);
+            curr.remove(curr.size() - 1);
+        }
     }
 
 }
