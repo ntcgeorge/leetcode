@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.math.*;
 
 /**
- * https://leetcode.cn/problems/min-cost-to-connect-all-points/submissions/504532786/
+ * link: https://leetcode.cn/problems/min-cost-to-connect-all-points/submissions/504532786/
  * time: 37min
  */
 public class Solution1584 {

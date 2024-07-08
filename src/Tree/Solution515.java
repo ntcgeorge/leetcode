@@ -2,7 +2,7 @@ import java.io.PrintWriter;
 import java.util.*;
 
 /**
- * https://leetcode.cn/problems/invert-binary-tree/
+ * link: https://leetcode.cn/problems/invert-binary-tree/
  * risk level-medium
  */
 public class Solution515 {

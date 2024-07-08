@@ -2,7 +2,7 @@ import java.io.PrintWriter;
 import java.util.*;
 
 /**
- * https://leetcode.cn/problems/all-paths-from-source-to-target/
+ * link: https://leetcode.cn/problems/all-paths-from-source-to-target/
  * time: 1hr37min
  */
 public class Solution797 {

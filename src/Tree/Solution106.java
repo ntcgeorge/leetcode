@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/submissions/501548563/
+ * link: https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/submissions/501548563/
  * risk-level: high
  */
 public class Solution106 {

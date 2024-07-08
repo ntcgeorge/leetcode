@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 
 public class Solution886 {
     /**
-     * https://leetcode.cn/problems/possible-bipartition/
+     * link: https://leetcode.cn/problems/possible-bipartition/
      * time: 26min
      */
     private boolean[] marked;

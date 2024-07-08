@@ -2,7 +2,7 @@
 import java.io.PrintWriter;
 
 /**
- * https://leetcode.cn/problems/split-array-largest-sum/description/
+ * link: https://leetcode.cn/problems/split-array-largest-sum/description/
  * risk level: same to Solution1011 because it is the same as that one
  */
 

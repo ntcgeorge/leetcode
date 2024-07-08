@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.lang.Math;
 
 /**
- * https://leetcode.cn/problems/minimum-ascii-delete-sum-for-two-strings/description/
+ * link: https://leetcode.cn/problems/minimum-ascii-delete-sum-for-two-strings/description/
  * time: 30 min
  */
 public class Solution712 {

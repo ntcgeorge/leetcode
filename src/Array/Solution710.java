@@ -2,7 +2,7 @@
 import java.io.PrintWriter;
 import java.util.*;
 /**
- * https://leetcode.cn/problems/random-pick-with-blacklist/
+ * link: https://leetcode.cn/problems/random-pick-with-blacklist/
  * risk level: high
  */
 

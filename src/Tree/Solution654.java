@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 /**
- * https://leetcode.cn/problems/maximum-binary-tree/submissions/501466533/
+ * link: https://leetcode.cn/problems/maximum-binary-tree/submissions/501466533/
  * risk-level: medium
  */
 public class Solution654 {

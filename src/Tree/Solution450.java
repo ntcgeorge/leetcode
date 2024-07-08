@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /**
- * https://leetcode.cn/problems/delete-node-in-a-bst/
+ * link: https://leetcode.cn/problems/delete-node-in-a-bst/
  * time: 40min
  */
 public class Solution450 {

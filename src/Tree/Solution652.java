@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * https://leetcode.cn/problems/find-duplicate-subtrees/
+ * link: https://leetcode.cn/problems/find-duplicate-subtrees/
  * risk-level: high
  */
 public class Solution652 {

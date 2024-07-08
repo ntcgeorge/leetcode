@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 
 /**
  * Quick sort version solution of question 215
- * https://leetcode.cn/problems/kth-largest-element-in-an-array/
+ * link: https://leetcode.cn/problems/kth-largest-element-in-an-array/
  * time:
  */
 public class Solution215QS {

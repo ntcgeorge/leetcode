@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * https://leetcode.cn/problems/kth-smallest-element-in-a-bst/submissions/501650707/
+ * link: https://leetcode.cn/problems/kth-smallest-element-in-a-bst/submissions/501650707/
  * time: 15 min
  */
 public class Solution230 {

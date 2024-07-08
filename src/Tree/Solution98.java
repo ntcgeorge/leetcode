@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * https://leetcode.cn/problems/validate-binary-search-tree/
+ * link: https://leetcode.cn/problems/validate-binary-search-tree/
  * time: 8min
  */
 public class Solution98 {

@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /**
- * https://leetcode.cn/problems/search-in-a-binary-search-tree/
+ * link: https://leetcode.cn/problems/search-in-a-binary-search-tree/
  * time: 1 min
  */
 public class Solution700 {

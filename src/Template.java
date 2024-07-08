@@ -17,7 +17,7 @@ public class Template {
         }
         out.close();
     }
-
+∏
 }
 
 class FastReader { 
@@ -77,6 +77,15 @@ class FastReader {
             intLine[j] = Integer.parseInt(lineSplit[j]);
         }
         return intLine;
+    }
+
+    int[][] readTwoDimensionArray(String d) {
+        int n = nextInt();
+        int[][] grid = new int[n][];
+        for(int i=0; i < n; i++) {
+            grid[i] = readIntLine(d);
+        }
+        return grid;
     }
 } 
 

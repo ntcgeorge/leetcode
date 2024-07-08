@@ -5,9 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * https://leetcode.cn/problems/count-of-smaller-numbers-after-self/submissions/502472929/
+ * link: https://leetcode.cn/problems/count-of-smaller-numbers-after-self/submissions/502472929/
  * time: 56min
- * observation:
+ * notes:
  * 1. the number of entry greater than the current number is accumulated, that is
  * because each operation only happens once on a slice of the array.
  * 2. use inner class pair to store the position and value is pretty handy, that is because

@@ -6,9 +6,9 @@ import java.io.InputStreamReader;
 import java.lang.Math;
 
 /**
- * https://leetcode.cn/problems/4sum/
+ * link: https://leetcode.cn/problems/4sum/
  * time: 33
- * Observation: similar to Solution15 but pay attention to the Integer overflow.
+ * notes: similar to Solution15 but pay attention to the Integer overflow.
  */
 public class Solution18 {
 

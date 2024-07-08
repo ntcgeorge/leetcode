@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /*
- * https://leetcode.cn/problems/flatten-nested-list-iterator/
+ * link: https://leetcode.cn/problems/flatten-nested-list-iterator/
  * time: 22 min
  */  
 

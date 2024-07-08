@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.lang.Math;
 
 /**
- * https://leetcode.cn/problems/permutations-ii/
+ * link: https://leetcode.cn/problems/permutations-ii/
  * time: 10 min
  */
 public class Solution47 {

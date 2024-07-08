@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /**
- * https://leetcode.cn/problems/sort-an-array/
+ * link: https://leetcode.cn/problems/sort-an-array/
  * time: 16 min
  */
 public class Solution912 {

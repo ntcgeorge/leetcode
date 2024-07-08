@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.util.*;
 
 /**
- * https://leetcode.cn/problems/insert-delete-getrandom-o1/
+ * link: https://leetcode.cn/problems/insert-delete-getrandom-o1/
  * risk level: high
  */
 

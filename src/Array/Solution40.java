@@ -6,9 +6,9 @@ import java.io.InputStreamReader;
 import java.lang.Math;
 
 /**
- * https://leetcode.cn/problems/combination-sum-ii/
+ * link: https://leetcode.cn/problems/combination-sum-ii/
  * time: 19min
- * Observation:
+ * notes:
  * 1. line 45 deduplicating tricks
  */
 public class Solution40 {

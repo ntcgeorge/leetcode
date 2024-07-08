@@ -6,9 +6,9 @@ import java.io.InputStreamReader;
 import java.lang.Math;
 
 /**
- * https://leetcode.cn/problems/subsets-ii/description/
+ * link: https://leetcode.cn/problems/subsets-ii/description/
  * time: 10min
- * Observation:
+ * notes:
  * 1. sort nums first and use a set to record the added array list, the reason why
  * we use sorting fist is because ArrayLists of different order are different.
  */

@@ -6,9 +6,9 @@ import java.io.InputStreamReader;
 import java.lang.Math;
 
 /**
- * https://leetcode.cn/problems/3sum/description/
+ * link: https://leetcode.cn/problems/3sum/description/
  * time: 37min
- * Observation: sort and reduce the complexity by double pointer, deduplicating trick is very
+ * notes: sort and reduce the complexity by double pointer, deduplicating trick is very
  * important, the trick leverages the fact that sorting will aggregate the same number on
  * the adjacent position
  */

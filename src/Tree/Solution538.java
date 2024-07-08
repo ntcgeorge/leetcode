@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /**
- * https://leetcode.cn/problems/convert-bst-to-greater-tree/
+ * link: https://leetcode.cn/problems/convert-bst-to-greater-tree/
  * time: 30 min
  */
 public class Solution538 {

@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
 /**
- * https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/
+ * link: https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/
  * risk: high
  */
 public class Solution34 {

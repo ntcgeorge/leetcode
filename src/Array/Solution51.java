@@ -9,10 +9,10 @@ import java.io.InputStreamReader;
 import java.lang.Math;
 
 /**
- * https://leetcode.cn/problems/n-queens
+ * link: https://leetcode.cn/problems/n-queens
  * time: 1hr20min
  * 
- * Observation:
+ * notes:
  * 1. each row and each column can have only one queen, because there is n
  * queen on the n by n board.
  * 2. we can use tracing-back method to list all the possible combination (row by row)

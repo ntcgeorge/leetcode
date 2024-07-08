@@ -6,9 +6,9 @@ import java.io.InputStreamReader;
 import java.lang.Math;
 
 /**
- * https://leetcode.cn/problems/coin-change/
+ * link: https://leetcode.cn/problems/coin-change/
  * time: 42 min
- * Observation:
+ * notes:
  * 1. dynamic programming trick: base case -> transition function -> memo optimization
  * 2. notice where to update memo
  */

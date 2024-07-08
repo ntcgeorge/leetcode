@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.lang.Math;
 
 /**
- * https://leetcode.cn/problems/combination-sum/
+ * link: https://leetcode.cn/problems/combination-sum/
  * time: 14min
  */
 public class Solution39 {

@@ -7,7 +7,7 @@ import java.lang.Math;
 
 /**
  * another solution to problem 47, use trimming techniques.
- * https://leetcode.cn/problems/permutations-ii/
+ * link: https://leetcode.cn/problems/permutations-ii/
  * time: 
  */
 public class Solution47_1 {

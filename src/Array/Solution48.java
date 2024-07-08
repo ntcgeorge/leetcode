@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 import java.util.List;
 
 /**
- * https://leetcode.cn/problems/rotate-image/description/
+ * link: https://leetcode.cn/problems/rotate-image/description/
  * risk-level: medium
  */
 class Solution48 {

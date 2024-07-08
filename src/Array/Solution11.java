@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /**
- * https://leetcode.cn/problems/container-with-most-water/submissions/504442322/
+ * link: https://leetcode.cn/problems/container-with-most-water/submissions/504442322/
  * time: 27min
  */
 public class Solution11 {

@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 /**
- * https://leetcode.cn/problems/kth-largest-element-in-an-array/
+ * link: https://leetcode.cn/problems/kth-largest-element-in-an-array/
  * time: 3min
  */
 public class Solution215 {

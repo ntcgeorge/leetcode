@@ -6,9 +6,9 @@ import java.io.InputStreamReader;
 import java.lang.Math;
 
 /**
- * https://leetcode.cn/problems/open-the-lock/
+ * link: https://leetcode.cn/problems/open-the-lock/
  * time: 50min
- * observation: pay attention to the position of adding the visited node.
+ * notes: pay attention to the position of adding the visited node.
  */
 public class Solution752 {
 

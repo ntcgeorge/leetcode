@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * https://leetcode.cn/problems/palindrome-number/submissions/504425365/
+ * link: https://leetcode.cn/problems/palindrome-number/submissions/504425365/
  * time: 9min
  */
 public class Solution9 {

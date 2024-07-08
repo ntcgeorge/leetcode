@@ -4,7 +4,7 @@ import java.io.PrintWriter;
 
 
 /**
- * https://leetcode.cn/problems/capacity-to-ship-packages-within-d-days/
+ * link: https://leetcode.cn/problems/capacity-to-ship-packages-within-d-days/
  * risk level: medium
  */
 public class Solution1011 { 

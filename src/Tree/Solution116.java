@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import org.w3c.dom.Node;
 
 /**
- * https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/description/
+ * link: https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/description/
  * risk-level: low
  */
 public class Solution116 {

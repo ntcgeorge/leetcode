@@ -2,7 +2,7 @@ import java.io.PrintWriter;
 import java.util.Random;
 
 /**
- * https://leetcode.cn/problems/random-pick-with-weight/submissions/500206248/
+ * link: https://leetcode.cn/problems/random-pick-with-weight/submissions/500206248/
  * risk level: medium
  */
 public class Solution528 {

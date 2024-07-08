@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/
+ * link: https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/
  * risk-level: high
  */
 public class Solution114 {
